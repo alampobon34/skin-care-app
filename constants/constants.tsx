@@ -9,6 +9,17 @@ const SIZES = {
   iconSize: 24,
   paddingLeft: 16,
   paddingRight: 16,
+  paddingHorizontal: 16,
+
+  marginLeft: 16,
+  marginRight: 16,
+  marginHorizontal: 16,
 };
 
-export { COLORS, SIZES };
+const CATEGORIES = [
+  { _id: 1, name: "Skin" },
+  { _id: 2, name: "Hair" },
+  { _id: 3, name: "Body" },
+];
+
+export { COLORS, SIZES, CATEGORIES };

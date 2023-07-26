@@ -1,24 +1,16 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import {
-  Pressable,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+
 import BottomTabNavigation from "./navigations/BottomTabNavigation";
-import { Ionicons, Fontisto, MaterialIcons } from "@expo/vector-icons";
-import { Notification } from "./screens/index";
-import { COLORS, SIZES } from "./constants/constants";
+import StackNavigation from "./navigations/StackNavigation";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 // SplashScreen.preventAutoHideAsync();
-const Stack = createStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -40,51 +32,13 @@ export default function App() {
     return null;
   }
 
-  // const navigation = useNavigation();
-
   return (
-    <NavigationContainer>
-      {/* <StatusBar style="auto" /> */}
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Bottom Navigation"
-          component={BottomTabNavigation}
-          options={({ navigation }) => ({
-            title: "",
-            headerRight: (props) => (
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Notification")}
-              >
-                <Fontisto
-                  style={{ paddingRight: SIZES.paddingRight }}
-                  name="bell"
-                  size={SIZES.iconSize}
-                />
-              </TouchableOpacity>
-            ),
-
-            headerLeft: (props) => (
-              <View style={{ flexDirection: "row" }}>
-                <Image
-                  style={{ width: 60, height: 60, paddingLeft: SIZES.paddingLeft }}
-                  source={require("./assets/logo.png")}
-                />
-              </View>
-            ),
-          })}
-        />
-
-        <Stack.Screen
-          name="Notification"
-          component={Notification}
-          options={{
-            headerBackTitleVisible: true,
-            headerTitle: "",
-            headerTintColor: "black",
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <StackNavigation />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
