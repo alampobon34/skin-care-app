@@ -7,12 +7,12 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList, BottomTabParamList } from "../types/type";
 
-type Props = NativeStackScreenProps<StackParamList, "Search">;
+// type Props = NativeStackScreenProps<StackParamList, "Search">;
 
-const SearchField = (props: Props) => {
-  const { navigation } = props;
+const SearchField = () => {
+  // const { navigation } = props;
   const handleNav = () => {
-    navigation.navigate("Search");
+    // navigation.navigate("Search");
   };
   return (
     <View style={styles.container}>

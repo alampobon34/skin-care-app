@@ -10,6 +10,7 @@ import BottomTabNavigation from "./navigations/BottomTabNavigation";
 import StackNavigation from "./navigations/StackNavigation";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+
 // SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -33,12 +34,14 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <StatusBar style="auto" />
-        <StackNavigation />
-      </NavigationContainer>
-    </SafeAreaProvider>
+
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <StatusBar style="auto" />
+          <BottomTabNavigation />
+        </NavigationContainer>
+      </SafeAreaProvider>
+
   );
 }
 

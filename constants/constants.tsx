@@ -1,3 +1,5 @@
+
+
 const COLORS = {
   bottomHover: "#83829A",
   yellow: "#F7D857",
@@ -21,5 +23,7 @@ const CATEGORIES = [
   { _id: 2, name: "Hair" },
   { _id: 3, name: "Body" },
 ];
+
+
 
 export { COLORS, SIZES, CATEGORIES };

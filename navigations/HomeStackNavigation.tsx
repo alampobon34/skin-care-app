@@ -1,22 +1,23 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StackParamList } from "../types/type";
-import { Notification } from "../screens/index";
-import BottomTabNavigation from "./BottomTabNavigation";
+import { HomeStackParamList } from "../types/type";
+import { DashboardScreen, NotificationScreen } from "../screens/index";
 import { Fontisto } from "@expo/vector-icons";
 import { SIZES } from "../constants/constants";
+import { NativeViewGestureHandler } from "react-native-gesture-handler";
+import { Image, TouchableOpacity, View } from "react-native";
 
-const Stack = createStackNavigator<StackParamList>();
+const HomeStack = createStackNavigator<HomeStackParamList>();
 
-const StackNavigation = () => {
+const HomeStackNavigation = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="BottomNavigation"
-        component={BottomTabNavigation}
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="Home"
+        component={DashboardScreen}
         options={({ navigation }) => ({
-          title: "",
+          title: "Home",
+          headerTitleAlign: "center",
           headerRight: (props) => (
             <TouchableOpacity
               onPress={() => navigation.navigate("Notification")}
@@ -44,19 +45,18 @@ const StackNavigation = () => {
         })}
       />
 
-      <Stack.Screen
+      <HomeStack.Screen
         name="Notification"
-        component={Notification}
+        component={NotificationScreen}
         options={{
-          headerBackTitleVisible: true,
-          headerTitle: "",
+          headerBackTitleVisible: false,
+          headerTitle: "Notification",
           headerTintColor: "black",
+          headerTitleAlign: "center",
         }}
       />
-    </Stack.Navigator>
+    </HomeStack.Navigator>
   );
 };
 
-export default StackNavigation;
-
-const styles = StyleSheet.create({});
+export default HomeStackNavigation;

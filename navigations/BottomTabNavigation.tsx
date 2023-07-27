@@ -1,29 +1,27 @@
-import { StyleSheet, Text, View, Platform } from "react-native";
-import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  TouchableOpacity,
+} from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home, Search, Profile, BookMark } from "../screens/index";
-import { Ionicons, Feather } from "@expo/vector-icons";
+import React from "react";
+import { SearchScreen, ProfileScreen, BookmarkScreen } from "../screens/index";
+import { Ionicons, Feather, Fontisto } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../constants/constants";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { BottomTabParamList } from "../types/type";
+import { NativeViewGestureHandler } from "react-native-gesture-handler";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import HomeStackNavigation from "./HomeStackNavigation";
+import SearchStackNavigation from "./SearchStackNavigation";
+import AuthStackNavigation from "./AuthStackNavigation";
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
-const Tab = createBottomTabNavigator();
-
-const screenOptions = {
-  tabBarShowLabel: false,
-  tabBarHideOnKeyboard: true,
-  headerShown: false,
-  tabBarStyle: {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-    left: 0,
-    elevation: 0,
-    height: 70,
-  },
-};
+// type Props = NativeStackScreenProps<StackParamList, "Notification">;
 
 const BottomTabNavigation = () => {
-  const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -31,20 +29,15 @@ const BottomTabNavigation = () => {
         tabBarInactiveTintColor: COLORS.bottomHover,
         tabBarActiveTintColor: COLORS.red,
         tabBarHideOnKeyboard: true,
-        headerShown: false,
-        // tabBarStyle: {
-        //   position: "absolute",
-        //   bottom: 0,
-        //   left: 0,
-        //   right: 0,
-        //   height:80,
-        // },
+        headerShown: true,
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeTab"
+        component={HomeStackNavigation}
         options={{
+          headerShown: false,
+          tabBarLabel: "Home",
           tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
@@ -57,9 +50,10 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Search"
-        component={Search}
+        name="SearchTab"
+        component={SearchStackNavigation}
         options={{
+          tabBarLabel: "Search",
           tabBarIcon: ({ focused }) => {
             return (
               <Ionicons
@@ -69,11 +63,13 @@ const BottomTabNavigation = () => {
               />
             );
           },
+          headerTitleAlign: "center",
+          headerTitle: "Search",
         }}
       />
       <Tab.Screen
-        name="BookMark"
-        component={BookMark}
+        name="BookmarkTab"
+        component={BookmarkScreen}
         options={{
           tabBarLabel: "Bookmark",
           tabBarIcon: ({ focused }) => {
@@ -85,11 +81,14 @@ const BottomTabNavigation = () => {
               />
             );
           },
+          headerTitleAlign: "center",
+          headerTitle: "Bookmark",
+          
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileTab"
+        component={AuthStackNavigation}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -100,6 +99,9 @@ const BottomTabNavigation = () => {
               />
             );
           },
+          headerTitleAlign: "center",
+          headerShown: false,
+          tabBarLabel: "Profile",
         }}
       />
     </Tab.Navigator>

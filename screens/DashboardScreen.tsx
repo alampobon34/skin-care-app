@@ -11,13 +11,13 @@ import { SearchField } from "../components/index";
 import { SIZES, COLORS, CATEGORIES } from "../constants/constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackParamList, BottomTabParamList } from "../types/type";
+// import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+
 import { TextInput } from "react-native-gesture-handler";
 
-type Props = NativeStackScreenProps<StackParamList, "Search">;
+// type Props = NativeStackScreenProps<StackParamList, "Search">;
 
-const Home = ({ navigation, route }: Props) => {
+const DashboardScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -27,7 +27,7 @@ const Home = ({ navigation, route }: Props) => {
         <View style={styles.searchInput}>
           <TextInput
             value=""
-            onPressIn={() => navigation.navigate("Search")}
+            onPressIn={() => {}}
             placeholder="What are you looking for?"
           />
         </View>
@@ -54,7 +54,7 @@ const Home = ({ navigation, route }: Props) => {
   );
 };
 
-export default Home;
+export default DashboardScreen;
 
 const styles = StyleSheet.create({
   container: {

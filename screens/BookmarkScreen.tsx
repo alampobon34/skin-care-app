@@ -2,14 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Profile = () => {
+const BookmarkScreen = () => {
   return (
     <View>
-      <Text>Profile</Text>
+      <Text>BookMark</Text>
     </View>
   );
 };
 
-export default Profile;
+export default BookmarkScreen;
 
 const styles = StyleSheet.create({});
